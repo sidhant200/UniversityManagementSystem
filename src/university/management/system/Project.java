@@ -14,11 +14,61 @@ public class Project extends JFrame {
         JLabel image = new JLabel(i3);
         add(image);
 
+        //THIS IS MENU BAR
+
         JMenuBar mb = new JMenuBar();
+
+        // THIS IS INFORMATION
 
         JMenu newinformation = new JMenu("NEW INFORMATION");
         newinformation.setForeground(Color.red);
         mb.add(newinformation);
+
+        JMenuItem Faculty = new JMenuItem("New Faculty info");
+        newinformation.add(Faculty);
+
+        JMenuItem Studentinfo = new JMenuItem("Student info");
+        newinformation.add(Studentinfo);
+
+
+        // THIS IS DETAILS
+
+        JMenu Details = new JMenu("VIEW DETAILS");
+        Details.setForeground(Color.blue);
+        mb.add(Details);
+
+        JMenuItem Facultydetails = new JMenuItem("View Faculty Details");
+        Details.add(Facultydetails);
+
+        JMenuItem Studentdetails = new JMenuItem("View Student Details");
+        Details.add(Studentdetails);
+
+
+
+        // THIS IS FOR APPLYING LEAVE
+
+        JMenu leave = new JMenu("LEAVE");
+        leave.setForeground(Color.black);
+        mb.add(leave);
+
+        JMenuItem Facultyleave = new JMenuItem("Apply Faculty Leave");
+        leave.add(Facultyleave);
+
+        JMenuItem Studentleave = new JMenuItem("Apply Student Leave");
+        leave.add(Studentleave);
+
+
+        //THIS IS FOR VIEWING LEAVE DETAILS
+
+        JMenu leavedetails = new JMenu("LEAVE DETAILS");
+        leavedetails.setForeground(Color.blue);
+        mb.add(leavedetails);
+
+        JMenuItem Facultyleavedetails = new JMenuItem("View Faculty Leave Details");
+        leavedetails.add(Facultyleavedetails);
+
+        JMenuItem Studentleavedetails = new JMenuItem("View Student Leave Details");
+        leavedetails.add(Studentleavedetails);
 
 
         setJMenuBar(mb);
