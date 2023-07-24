@@ -71,6 +71,28 @@ public class Project extends JFrame {
         leavedetails.add(Studentleavedetails);
 
 
+        JMenu exam = new JMenu("EXAMINATION");
+        exam.setForeground(Color.orange);
+        mb.add(exam);
+
+        JMenuItem examinationDetails = new JMenuItem("EXAMINATION RESULTS");
+        exam.add(examinationDetails);
+
+        JMenuItem entermarks = new JMenuItem("ENTER MARKS");
+        exam.add(entermarks);
+
+
+        JMenu updateDetails = new JMenu("UPDATE DETAILS");
+        updateDetails.setForeground(Color.blue);
+        mb.add(updateDetails);
+
+        JMenuItem updateFacultyinfo = new JMenuItem("UPDATE FACULTY DETAILS");
+        updateDetails.add(updateFacultyinfo);
+
+        JMenuItem updateStudentinfo = new JMenuItem("UPDATE STUDENT DETAILS");
+        updateDetails.add(updateStudentinfo);
+
+
         setJMenuBar(mb);
         setVisible(true);
 

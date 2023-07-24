@@ -13,7 +13,7 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
         Username.setBounds(40 , 20 , 100 , 20);
         JTextField username = new JTextField();
-        username.setBounds(120 , 21 , 200 , 20);
+        username.setBounds(120  , 21 , 200 , 20);
         add(username);
         setLayout(null);
 
