@@ -4,17 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class Login extends JFrame implements ActionListener {
     JButton login , cancel;
+    JTextField tfusername , tfpassword;
     public Login(){
         JLabel Username = new JLabel("USERNAME");
         add(Username);
         setLayout(null);
         Username.setBounds(40 , 20 , 100 , 20);
-        JTextField username = new JTextField();
-        username.setBounds(120  , 21 , 200 , 20);
-        add(username);
+
+         tfusername = new JTextField();
+        tfusername.setBounds(120  , 21 , 200 , 20);
+        add(tfusername);
         setLayout(null);
 
 
@@ -22,9 +25,10 @@ public class Login extends JFrame implements ActionListener {
         add(Password);
         setLayout(null);
         Password.setBounds(40 , 80 , 100 , 20);
-        JPasswordField password = new JPasswordField();
-        password.setBounds(120 , 80 , 200 , 20);
-        add(password);
+
+         tfpassword = new JPasswordField();
+        tfpassword.setBounds(120 , 80 , 200 , 20);
+        add(tfpassword);
         setLayout(null);
 
         login = new JButton("Login");
@@ -64,6 +68,27 @@ public class Login extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login){
+            String username = tfusername.getText();
+            String password = tfpassword.getText();
+
+            String query = "select * from login where username = '"+username+"' and password= '"+password+"'";
+            try {
+                Conn c = new Conn();
+                ResultSet rs = c.s.executeQuery(query);
+
+                if (rs.next()) {
+                    setVisible(false);
+                    new Project();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password");
+                    setVisible(false);
+                }
+
+                c.s.close();
+            }catch(Exception ae){
+                ae.printStackTrace();
+
+            }
 
 
         }else if(e.getSource() == cancel){

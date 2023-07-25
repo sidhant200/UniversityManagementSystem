@@ -2,8 +2,12 @@ package university.management.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Project extends JFrame {
+public class Project extends JFrame implements ActionListener {
+    JMenu Exit;
+    JMenuItem ex , calculator , notepad;
     Project (){
 //        setLocation(100 , 250 );
         setSize(1540 , 850);
@@ -70,7 +74,7 @@ public class Project extends JFrame {
         JMenuItem Studentleavedetails = new JMenuItem("View Student Leave Details");
         leavedetails.add(Studentleavedetails);
 
-
+//      FOR EXAMIUNATION
         JMenu exam = new JMenu("EXAMINATION");
         exam.setForeground(Color.orange);
         mb.add(exam);
@@ -81,7 +85,7 @@ public class Project extends JFrame {
         JMenuItem entermarks = new JMenuItem("ENTER MARKS");
         exam.add(entermarks);
 
-
+//      UPDATE DETAILS
         JMenu updateDetails = new JMenu("UPDATE DETAILS");
         updateDetails.setForeground(Color.blue);
         mb.add(updateDetails);
@@ -92,14 +96,80 @@ public class Project extends JFrame {
         JMenuItem updateStudentinfo = new JMenuItem("UPDATE STUDENT DETAILS");
         updateDetails.add(updateStudentinfo);
 
+        JMenu fees = new JMenu("FEES");
+        fees.setForeground(Color.red);
+        mb.add(fees);
+
+        JMenuItem feesstructure = new JMenuItem("FEES STRUCTURE");
+        fees.add(feesstructure);
+
+        JMenuItem feesform = new JMenuItem("FEES FORM");
+        fees.add(feesform);
+
+
+        JMenu utility = new JMenu("UTILITY ");
+        utility.setForeground(Color.green);
+        mb.add(utility);
+
+        notepad = new JMenuItem("NOTEPAD");
+        utility.add(notepad);
+        notepad.addActionListener(this);
+
+         calculator = new JMenuItem("CALCULATOR");
+        utility.add(calculator);
+        calculator.addActionListener(this);
+
+
+
+         Exit = new JMenu("EXIT ");
+        Exit.setForeground(Color.blue);
+        Exit.addActionListener(this);
+        mb.add(Exit);
+         ex = new JMenuItem("EXIT");
+         ex.addActionListener(this);
+        Exit.add(ex);
+
+
+
+
+
+
 
         setJMenuBar(mb);
         setVisible(true);
 
 
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == Exit){
+
+
+        }else if(e.getSource() == ex){
+            setVisible(false);
+
+        }else if (e.getSource() == calculator){
+            try{
+                Runtime.getRuntime().exec("calc.exe");
+
+            }catch (Exception ae){
+
+            }
+        }else if (e.getSource()==notepad){
+            try{
+                Runtime.getRuntime().exec("notepad.exe");
+            }catch (Exception ee){
+
+            }
+        }
+
+    }
+
+
     public static void main(String[] args) {
         new Project();
 
     }
+
+
 }
