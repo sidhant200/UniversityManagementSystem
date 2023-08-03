@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Project extends JFrame implements ActionListener {
-    JMenu Exit;
-    JMenuItem ex , calculator , notepad;
+    JMenu Exit , newinformation , Details;
+    JMenuItem ex , calculator , notepad , Faculty , Studentinfo , Facultydetails , Studentdetails;
     Project (){
 //        setLocation(100 , 250 );
         setSize(1540 , 850);
@@ -24,27 +24,33 @@ public class Project extends JFrame implements ActionListener {
 
         // THIS IS INFORMATION
 
-        JMenu newinformation = new JMenu("NEW INFORMATION");
+        newinformation = new JMenu("NEW INFORMATION");
+        newinformation.addActionListener(this);
         newinformation.setForeground(Color.red);
         mb.add(newinformation);
 
-        JMenuItem Faculty = new JMenuItem("New Faculty info");
+       Faculty = new JMenuItem("New Faculty info");
+        Faculty.addActionListener(this);
         newinformation.add(Faculty);
 
-        JMenuItem Studentinfo = new JMenuItem("Student info");
+       Studentinfo = new JMenuItem("Student info");
+       Studentinfo.addActionListener(this);
         newinformation.add(Studentinfo);
 
 
         // THIS IS DETAILS
 
-        JMenu Details = new JMenu("VIEW DETAILS");
+         Details = new JMenu("VIEW DETAILS");
+         Details.addActionListener(this);
         Details.setForeground(Color.blue);
         mb.add(Details);
 
-        JMenuItem Facultydetails = new JMenuItem("View Faculty Details");
+         Facultydetails = new JMenuItem("View Faculty Details");
+         Facultydetails.addActionListener(this);
         Details.add(Facultydetails);
 
-        JMenuItem Studentdetails = new JMenuItem("View Student Details");
+         Studentdetails = new JMenuItem("View Student Details");
+         Studentdetails.addActionListener(this);
         Details.add(Studentdetails);
 
 
@@ -142,29 +148,45 @@ public class Project extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Exit){
+        if (e.getSource() == Exit) {
 
 
-        }else if(e.getSource() == ex){
+        } else if (e.getSource() == ex) {
             setVisible(false);
 
-        }else if (e.getSource() == calculator){
-            try{
+        } else if (e.getSource() == calculator) {
+            try {
                 Runtime.getRuntime().exec("calc.exe");
 
-            }catch (Exception ae){
+            } catch (Exception ae) {
 
             }
-        }else if (e.getSource()==notepad){
-            try{
+        } else if (e.getSource() == notepad) {
+            try {
                 Runtime.getRuntime().exec("notepad.exe");
-            }catch (Exception ee){
+            } catch (Exception ee) {
 
             }
         }
 
-    }
+        if (e.getSource() == newinformation) {
 
+        } else if (e.getSource() == Faculty) {
+            new AddTeacher();
+        } else if (e.getSource() == Studentinfo) {
+            new AddStudent();
+        }
+
+        if (e.getSource()==Details){
+
+        }else if (e.getSource()==Facultydetails){
+
+        }else if (e.getSource()==Studentdetails){
+            new StudentDetails();
+        }
+
+
+    }
 
     public static void main(String[] args) {
         new Project();
