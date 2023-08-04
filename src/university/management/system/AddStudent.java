@@ -216,6 +216,7 @@ public class AddStudent extends JFrame implements ActionListener {
             }
 
         }else{
+            JOptionPane.showMessageDialog(null , "you have not registered please re register");
             setVisible(false);
         }
 

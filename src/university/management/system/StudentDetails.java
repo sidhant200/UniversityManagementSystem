@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 public class StudentDetails extends JFrame implements ActionListener {
-    JButton search , update , add , print , cancel;
+    JButton search , update , add , print , cancel , delete;
     JTable table;
     Choice crollno;
 
@@ -71,6 +71,11 @@ public class StudentDetails extends JFrame implements ActionListener {
             cancel.addActionListener(this);
            add(cancel);
 
+        delete = new JButton("delete");
+        delete.setBounds(1300 , 20 , 100, 20);
+        delete.addActionListener(this);
+        add(delete);
+
             setBounds(10, 100, 1500, 700);
             setVisible(true);
 
@@ -79,6 +84,15 @@ public class StudentDetails extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource()==search){
+            String query = "select * from student where rollno = '"+crollno.getSelectedItem()+"'";
+            try {
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery(query);
+            table.setModel(DbUtils.resultSetToTableModel(rs));
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
 
         }else if (ae.getSource()==print){
             try {
@@ -94,6 +108,11 @@ public class StudentDetails extends JFrame implements ActionListener {
             //new UpdateStudent();
         }else if (ae.getSource()==cancel){
             setVisible(false);
+        }else if (ae.getSource()==delete){
+            deletestudent deleteByIDFrame = new deletestudent();
+
+            // Set the frame visible
+            deleteByIDFrame.setVisible(true);
         }
 
     }

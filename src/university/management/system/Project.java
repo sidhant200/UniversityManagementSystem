@@ -180,6 +180,7 @@ public class Project extends JFrame implements ActionListener {
         if (e.getSource()==Details){
 
         }else if (e.getSource()==Facultydetails){
+            new TeacherDetails();
 
         }else if (e.getSource()==Studentdetails){
             new StudentDetails();
